@@ -84,60 +84,6 @@ if __name__ == "__main__":
 
     #plt.legend()
     for i in range(iterations):
-        """
-        r01 = distEq(loc0, loc1)
-        r02 = distEq(loc0, loc2)
-        r12 = distEq(loc1, loc2)
-
-        a01 = abs(forceEq(m0, m1, loc0, loc1)/m0)
-        a02 = abs(forceEq(m0, m2, loc0, loc2)/m0)
-
-        a01x = a01*((xDist(loc0, loc1))/r01)
-        a01y = a01*((yDist(loc0, loc1))/r01)
-
-        a02x = a02*((xDist(loc0, loc2))/r02)
-        a02y = a02*((yDist(loc0, loc2))/r02)
-
-        a0x = a01x + a02x
-        a0y = a01y + a02y
-
-        vel0[0] += a0x*dt
-        vel0[1] += a0y*dt
-
-        newloc0[0] = loc0[0] + vel0[0]*dt
-        newloc0[1] = loc0[1] + vel0[1]*dt
-
-        a10 = abs(forceEq(m0, m1, loc0, loc1)/m1)
-        a12 = abs(forceEq(m1, m2, loc1, loc2)/m1)
-
-        a10x = a10*((xDist(loc1, loc0))/r01)
-        a10y = a10*((yDist(loc1, loc0))/r01)
-
-        a12x = a12*((xDist(loc1, loc2))/r12)
-        a12y = a12*((yDist(loc1, loc2))/r12)
-
-        a1x = a10x + a12x
-        a1y = a10y + a12y
-
-        vel1[0] += a1x*dt
-        vel1[1] += a1y*dt
-
-        newloc1[0] = loc1[0] + vel1[0]*dt
-        newloc1[1] = loc1[1] + vel1[1]*dt
-
-
-        a21 = abs(forceEq(m2, m1, loc2, loc1)/m2)
-        a20 = abs(forceEq(m2, m0, loc2, loc0)/m2)
-
-        a21x = a21*((xDist(loc2, loc1))/r12)
-        a21y = a21*((yDist(loc2, loc1))/r12)
-
-        a20x = a20*((xDist(loc2, loc0))/r02)
-        a20y = a20*((yDist(loc2, loc0))/r02)
-
-        a2x = a21x + a20x
-        a2y = a21y + a20y
-        """
 
         d01 = distEq(loc0, loc1)
         d02 = distEq(loc0, loc2)
