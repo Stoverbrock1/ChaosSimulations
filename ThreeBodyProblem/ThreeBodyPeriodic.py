@@ -63,8 +63,8 @@ y2i = -3
 vel0, vel1, vel2 = [0, 0], [0, 30000], [1000, 30000]
 vel0, vel1, vel2 = [0, 0], [0, 0], [0, 0]
 
-XBounds = [-50, 50]
-YBounds = [-50, 50]
+XBounds = [-150, 150]
+YBounds = [-150, 150]
 
 iterations = 500000
 
@@ -126,7 +126,23 @@ if __name__ == "__main__":
         newloc2[0] = loc2[0] + vel2[0]*dt
         newloc2[1] = loc2[1] + vel2[1]*dt
 
-        loc0, loc1, loc2 = newloc0, newloc1, newloc2
+        newlocs = [newloc0, newloc1, newloc2]
+        refresh = 0
+        for newLoc in newlocs:
+            if ((newLoc[0] <= XBounds[0]) or (newLoc[0] >= XBounds[1])):
+                newLoc[0] = -newLoc[0]
+                newLoc[1] = -newLoc[1]
+                refresh = 1
+            elif ((newLoc[1] <= YBounds[0]) or (newLoc[1] >= YBounds[1])):
+                newLoc[0] = -newLoc[0]
+                newLoc[1] = -newLoc[1]
+                refresh = 1
+
+
+
+
+
+        loc0, loc1, loc2 = newlocs[0], newlocs[1], newlocs[2]
         xPast[0].append(loc0[0])
         xPast[1].append(loc1[0])
         xPast[2].append(loc2[0])
@@ -136,13 +152,18 @@ if __name__ == "__main__":
         yPast[2].append(loc2[1])
         print(len(xPast[0]))
         #print(vel1[0], vel1[1])
-
+        xPlot = [x[-50:] for x in xPast]
+        print(len(xPlot[0]))
+        yPlot = [y[-50:] for y in yPast]
+        #if (refresh == 1):
+        #    xPlot = [x[-1:] for x in xPast]
+        #    yPlot = [y[-1:] for y in yPast]
         # Mention x and y limits to define their range
         if (ANIMATE):
             #plt.xlim(-160e9, 160e9)
-            plt.xlim(-50, 50)
+            plt.xlim(XBounds[0], XBounds[1])
             #plt.ylim(-160e9, 160e9)
-            plt.ylim(-50, 50)
+            plt.ylim(YBounds[0], YBounds[1])
 
             # Ploting graph
             #include point for current location
@@ -151,9 +172,9 @@ if __name__ == "__main__":
             plt.scatter(xPast[2][-1:], yPast[2][-1:], color='red',   s=4.5, label='m2 = ' + str(m2))
 
 
-            plt.plot(xPast[0][-50:], yPast[0][-50:],  'g-', linewidth=.75, label='m0 = ' + str(m0))
-            plt.plot(xPast[1][-50:], yPast[1][-50:], 'b-', linewidth=.75, label='m1 = ' + str(m1))
-            plt.plot(xPast[2][-50:], yPast[2][-50:], 'r-', linewidth=.75, label='m2 = ' + str(m2))
+            plt.plot(xPlot[0], yPlot[0],  'g-', linewidth=.75, label='m0 = ' + str(m0))
+            plt.plot(xPlot[1], yPlot[1], 'b-', linewidth=.75, label='m1 = ' + str(m1))
+            plt.plot(xPlot[2], yPlot[2], 'r-', linewidth=.75, label='m2 = ' + str(m2))
 
 
             #plt.plot(loc0[0], loc0[1], marker='.', markersize=.25, color='yellow')

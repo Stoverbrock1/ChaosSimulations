@@ -35,35 +35,45 @@ def xDist(coord0, coord1):
 PARAMETERS TO BE EDITED
 """
 
-ANIMATE = True
+ANIMATE = False
 
 #dt = 8640
 dt = 1
 
 #m0 = ac.M_sun.value
-m0 = 1
+m0 = 10
 #m1 = ac.M_earth.value
-m1 = 1
+m1 = 10
 #m2 = 7.34767309 * (10)**22
-m2 = 1
+m2 = 10
 
 #x0i = 0
-x0i = -15
+x0i = -9.7
 #x1i = 150e9
 x1i = 0
 #x2i = x1i
-x2i = 11
+x2i = 9.7
 
-y0i = -1
+y0i = 2.43
 #y1i = -0
-y1i = 14
+y1i = 0
 #y2i = 384400000
-y2i = -3
+y2i = -2.43
 
 vel0, vel1, vel2 = [0, 0], [0, 30000], [1000, 30000]
-vel0, vel1, vel2 = [0, 0], [0, 0], [0, 0]
+vel0, vel1, vel2 = [.932/2, .865/2], [-.932, -.865], [.932/2, .865/2]
 
-iterations = 500000
+SET_BOUNDS = True
+
+XBounds = [-15, 15]
+YBounds = [-15, 15]
+
+tail_len = 10
+
+iterations = 1000
+
+save_img = True
+img_name = 'FigEight1000Iterations.png'
 
 """
 END OF PARAMETERS
@@ -135,9 +145,10 @@ if __name__ == "__main__":
         # Mention x and y limits to define their range
         if (ANIMATE):
             #plt.xlim(-160e9, 160e9)
-            plt.xlim(-50, 50)
             #plt.ylim(-160e9, 160e9)
-            plt.ylim(-50, 50)
+            if (SET_BOUNDS):
+                plt.xlim(XBounds[0], XBounds[1])
+                plt.ylim(YBounds[0], YBounds[1])
 
             # Ploting graph
             #include point for current location
@@ -146,9 +157,9 @@ if __name__ == "__main__":
             plt.scatter(xPast[2][-1:], yPast[2][-1:], color='red',   s=4.5, label='m2 = ' + str(m2))
 
 
-            plt.plot(xPast[0][-50:], yPast[0][-50:],  'g-', linewidth=.75, label='m0 = ' + str(m0))
-            plt.plot(xPast[1][-50:], yPast[1][-50:], 'b-', linewidth=.75, label='m1 = ' + str(m1))
-            plt.plot(xPast[2][-50:], yPast[2][-50:], 'r-', linewidth=.75, label='m2 = ' + str(m2))
+            plt.plot(xPast[0][-tail_len:], yPast[0][-tail_len:],  'g-', linewidth=.75, label='m0 = ' + str(m0))
+            plt.plot(xPast[1][-tail_len:], yPast[1][-tail_len:], 'b-', linewidth=.75, label='m1 = ' + str(m1))
+            plt.plot(xPast[2][-tail_len:], yPast[2][-tail_len:], 'r-', linewidth=.75, label='m2 = ' + str(m2))
 
 
             #plt.plot(loc0[0], loc0[1], marker='.', markersize=.25, color='yellow')
@@ -161,4 +172,6 @@ if __name__ == "__main__":
         plt.plot(xPast[0], yPast[0],  'g-', linewidth=.75, label='m0 = ' + str(m0))
         plt.plot(xPast[1], yPast[1], 'b-', linewidth=.75, label='m1 = ' + str(m1))
         plt.plot(xPast[2], yPast[2], 'r-', linewidth=.75, label='m2 = ' + str(m2))
+        if (save_img):
+            plt.savefig('./Images/' + img_name)
     plt.show()
