@@ -35,7 +35,7 @@ def xDist(coord0, coord1):
 PARAMETERS TO BE EDITED
 """
 
-ANIMATE = True
+ANIMATE = False
 
 #dt = 8640
 dt = 1
@@ -43,20 +43,20 @@ dt = 1
 #m0 = ac.M_sun.value
 m0 = 1
 #m1 = ac.M_earth.value
-m1 = 1
+m1 = .5
 #m2 = 7.34767309 * (10)**22
 m2 = 1
 
 #x0i = 0
 x0i = 0
 #x1i = 150e9
-x1i =  0.85
+x1i =  6.135
 #x2i = x1i
-x2i = 10
+x2i = 15
 
 y0i = 0
 #y1i = -0
-y1i = 1.5
+y1i =  5.7
 #y2i = 384400000
 y2i = 0
 
@@ -64,14 +64,14 @@ vel0, vel1, vel2 = [0, 0], [0, 30000], [1000, 30000]
 #vel0, vel1, vel2 = [.932/2, .865/2], [-.932, -.865], [.932/2, .865/2]
 vel0, vel1, vel2 = [0, 0], [0, 0], [0, 0]
 
-SET_BOUNDS = False
+SET_BOUNDS = True
 
-XBounds = [-30, 30]
-YBounds = [-30, 30]
+XBounds = [-20, 20]
+YBounds = [-20, 20]
 
 tail_len = 10
 
-iterations = 1000
+iterations = 500
 
 save_img = False
 img_name = 'FigEight1000Iterations.png'
