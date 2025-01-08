@@ -35,7 +35,7 @@ def xDist(coord0, coord1):
 PARAMETERS TO BE EDITED
 """
 
-ANIMATE = False
+ANIMATE = True
 
 #dt = 8640
 dt = 1
@@ -66,12 +66,12 @@ vel0, vel1, vel2 = [0, 0], [0, 0], [0, 0]
 
 SET_BOUNDS = True
 
-XBounds = [-20, 20]
-YBounds = [-20, 20]
+XBounds = [-30, 30]
+YBounds = [-30, 30]
 
 tail_len = 10
 
-iterations = 500
+iterations = 1000
 
 save_img = False
 img_name = 'FigEight1000Iterations.png'
